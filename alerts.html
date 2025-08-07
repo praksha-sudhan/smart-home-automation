@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Real-Time Alerts & Notifications</title>
+  <link rel="stylesheet" href="alerts.css" />
+</head>
+<body>
+  <header>
+    <h1>Real-Time Alerts & Notifications</h1>
+    <a class="back-link" href="home.html">← Back to Dashboard</a>
+  </header>
+
+  <main class="container">
+    <section class="feature-card">
+      <h2>📢 Instant Device Alerts</h2>
+      <p>Stay updated with device failures, disconnections, or unusual activities.</p>
+    </section>
+
+    <section class="feature-card">
+      <h2>🔔 Choose Your Alert Preferences</h2>
+      <div class="subcard">
+        <label class="toggle-label">
+          <span>Email Notifications</span>
+          <label class="switch">
+            <input type="checkbox" id="emailToggle" checked />
+            <span class="slider"></span>
+          </label>
+        </label>
+        <p id="emailStatus">Status: Enabled</p>
+
+        <label class="toggle-label">
+          <span>SMS Alerts</span>
+          <label class="switch">
+            <input type="checkbox" id="smsToggle" />
+            <span class="slider"></span>
+          </label>
+        </label>
+        <p id="smsStatus">Status: Disabled</p>
+
+        <label class="toggle-label">
+          <span>Push Notifications</span>
+          <label class="switch">
+            <input type="checkbox" id="pushToggle" checked />
+            <span class="slider"></span>
+          </label>
+        </label>
+        <p id="pushStatus">Status: Enabled</p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const emailToggle = document.getElementById("emailToggle");
+    const smsToggle = document.getElementById("smsToggle");
+    const pushToggle = document.getElementById("pushToggle");
+
+    const emailStatus = document.getElementById("emailStatus");
+    const smsStatus = document.getElementById("smsStatus");
+    const pushStatus = document.getElementById("pushStatus");
+
+    emailToggle.addEventListener("change", () => {
+      emailStatus.textContent = emailToggle.checked ? "Status: Enabled" : "Status: Disabled";
+    });
+
+    smsToggle.addEventListener("change", () => {
+      smsStatus.textContent = smsToggle.checked ? "Status: Enabled" : "Status: Disabled";
+    });
+
+    pushToggle.addEventListener("change", () => {
+      pushStatus.textContent = pushToggle.checked ? "Status: Enabled" : "Status: Disabled";
+    });
+  </script>
+</body>
+</html>

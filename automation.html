@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Automation Rule</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="automation.css" />
+</head>
+<body>
+  <header>
+    <h1>Create Automation Rule</h1>
+    <a class="back-link" href="home.html">← Back to Dashboard</a>
+  </header>
+
+  <main class="container">
+    <section class="form-card">
+      <form id="automationForm">
+        <label for="device">Select Device:</label>
+        <select id="device" required>
+          <option value="">-- Choose Device --</option>
+          <option>Light</option>
+          <option>Fan</option>
+          <option>Air Conditioner</option>
+          <option>Door Lock</option>
+        </select>
+
+        <label for="trigger">Select Trigger:</label>
+        <select id="trigger" required>
+          <option value="">-- Choose Trigger --</option>
+          <option value="motion">Motion Detected</option>
+          <option value="no_motion">No Motion</option>
+          <option value="time">Scheduled Time</option>
+          <option value="voice">Voice Command</option>
+        </select>
+
+        <label for="action">Select Action:</label>
+        <select id="action" required>
+          <option value="">-- Choose Action --</option>
+          <option>Turn ON</option>
+          <option>Turn OFF</option>
+          <option>Lock</option>
+          <option>Unlock</option>
+        </select>
+
+        <label for="time">Schedule Time (if applicable):</label>
+        <input type="time" id="time" />
+
+        <button type="submit">Create Rule</button>
+      </form>
+    </section>
+  </main>
+
+  <script>
+    document.getElementById("automationForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("Automation rule created successfully!");
+    });
+  </script>
+</body>
+</html>

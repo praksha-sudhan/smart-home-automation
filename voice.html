@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Voice Assistant Integration</title>
+  <link rel="stylesheet" href="voice.css" />
+</head>
+<body>
+  <header>
+    <h1>Voice Assistant Integration</h1>
+    <a class="back-link" href="home.html">← Back to Dashboard</a>
+  </header>
+
+  <main class="container">
+    <section class="feature-card">
+      <h2>🎙️ Connect with Alexa</h2>
+      <p>Control your smart devices using Amazon Alexa voice commands.</p>
+      <div class="subcard">
+        <label class="toggle-label">
+          <span>Enable Alexa</span>
+          <label class="switch">
+            <input type="checkbox" id="alexaToggle" />
+            <span class="slider"></span>
+          </label>
+        </label>
+        <p id="alexaStatus">Status: Disabled</p>
+      </div>
+    </section>
+
+    <section class="feature-card">
+      <h2>🗣️ Connect with Google Assistant</h2>
+      <p>Execute automation and get updates using Google Assistant.</p>
+      <div class="subcard">
+        <label class="toggle-label">
+          <span>Enable Google Assistant</span>
+          <label class="switch">
+            <input type="checkbox" id="googleToggle" />
+            <span class="slider"></span>
+          </label>
+        </label>
+        <p id="googleStatus">Status: Disabled</p>
+      </div>
+    </section>
+
+    <section class="feature-card">
+      <h2>💬 Connect with Siri</h2>
+      <p>Use Apple Siri to control smart home features hands-free.</p>
+      <div class="subcard">
+        <label class="toggle-label">
+          <span>Enable Siri</span>
+          <label class="switch">
+            <input type="checkbox" id="siriToggle" />
+            <span class="slider"></span>
+          </label>
+        </label>
+        <p id="siriStatus">Status: Disabled</p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const alexaToggle = document.getElementById("alexaToggle");
+    const alexaStatus = document.getElementById("alexaStatus");
+    alexaToggle.addEventListener("change", () => {
+      alexaStatus.textContent = alexaToggle.checked ? "Status: Enabled" : "Status: Disabled";
+    });
+
+    const googleToggle = document.getElementById("googleToggle");
+    const googleStatus = document.getElementById("googleStatus");
+    googleToggle.addEventListener("change", () => {
+      googleStatus.textContent = googleToggle.checked ? "Status: Enabled" : "Status: Disabled";
+    });
+
+    const siriToggle = document.getElementById("siriToggle");
+    const siriStatus = document.getElementById("siriStatus");
+    siriToggle.addEventListener("change", () => {
+      siriStatus.textContent = siriToggle.checked ? "Status: Enabled" : "Status: Disabled";
+    });
+  </script>
+</body>
+</html>

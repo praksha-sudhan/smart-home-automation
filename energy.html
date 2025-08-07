@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Energy Monitoring</title>
+  <link rel="stylesheet" href="energy.css" />
+</head>
+<body>
+  <header>
+    <h1>Energy Consumption Monitoring</h1>
+    <a class="back-link" href="home.html">← Back to Dashboard</a>
+  </header>
+
+  <main class="container">
+    <section class="feature-card">
+      <h2>📊 Track Energy Usage</h2>
+      <p>Monitor real-time power consumption of your smart devices.</p>
+      <div class="subcard">
+        <label class="toggle-label">
+          <span>Track Light Usage</span>
+          <label class="switch">
+            <input type="checkbox" id="lightUsageToggle" />
+            <span class="slider"></span>
+          </label>
+        </label>
+        <p id="lightUsageStatus">Status: Off</p>
+      </div>
+    </section>
+
+    <section class="feature-card">
+      <h2>📈 Energy Reports</h2>
+      <p>Generate weekly/monthly reports of device energy usage trends.</p>
+      <div class="subcard">
+        <label class="toggle-label">
+          <span>Enable Auto Report</span>
+          <label class="switch">
+            <input type="checkbox" id="reportToggle" />
+            <span class="slider"></span>
+          </label>
+        </label>
+        <p id="reportStatus">Status: Off</p>
+      </div>
+    </section>
+
+    <section class="feature-card">
+      <h2>💡 Efficiency Suggestions</h2>
+      <p>Get smart recommendations to reduce energy waste and save costs.</p>
+      <div class="subcard">
+        <label class="toggle-label">
+          <span>Enable Suggestions</span>
+          <label class="switch">
+            <input type="checkbox" id="suggestionToggle" />
+            <span class="slider"></span>
+          </label>
+        </label>
+        <p id="suggestionStatus">Status: Off</p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const lightToggle = document.getElementById("lightUsageToggle");
+    const reportToggle = document.getElementById("reportToggle");
+    const suggestionToggle = document.getElementById("suggestionToggle");
+
+    const lightStatus = document.getElementById("lightUsageStatus");
+    const reportStatus = document.getElementById("reportStatus");
+    const suggestionStatus = document.getElementById("suggestionStatus");
+
+    lightToggle.addEventListener("change", () => {
+      lightStatus.textContent = lightToggle.checked ? "Status: On" : "Status: Off";
+    });
+
+    reportToggle.addEventListener("change", () => {
+      reportStatus.textContent = reportToggle.checked ? "Status: On" : "Status: Off";
+    });
+
+    suggestionToggle.addEventListener("change", () => {
+      suggestionStatus.textContent = suggestionToggle.checked ? "Status: On" : "Status: Off";
+    });
+  </script>
+</body>
+</html>

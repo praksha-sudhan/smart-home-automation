@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Analytics & Reporting</title>
+  <link rel="stylesheet" href="analytics.css" />
+</head>
+<body>
+  <header>
+    <h1>Analytics & Reporting</h1>
+    <a class="back-link" href="home.html">← Back to Dashboard</a>
+  </header>
+
+  <main class="container">
+    <section class="feature-card">
+      <h2>📑 Generate Reports</h2>
+      <p>View summaries of device usage, automation, and incidents.</p>
+      <div class="subcard">
+        <label class="toggle-label">
+          <span>Enable Report Generation</span>
+          <label class="switch">
+            <input type="checkbox" id="reportToggle">
+            <span class="slider"></span>
+          </label>
+        </label>
+        <p id="reportStatus">Status: Disabled</p>
+      </div>
+    </section>
+
+    <section class="feature-card">
+      <h2>📊 Data Visualization</h2>
+      <p>Visualize trends and patterns using charts and graphs.</p>
+      <div class="subcard">
+        <label class="toggle-label">
+          <span>Enable Charts</span>
+          <label class="switch">
+            <input type="checkbox" id="chartToggle">
+            <span class="slider"></span>
+          </label>
+        </label>
+        <p id="chartStatus">Status: Disabled</p>
+      </div>
+    </section>
+
+    <section class="feature-card">
+      <h2>📂 Export Options</h2>
+      <p>Export reports in PDF or CSV format for future use.</p>
+      <div class="subcard">
+        <label class="toggle-label">
+          <span>Enable Export</span>
+          <label class="switch">
+            <input type="checkbox" id="exportToggle">
+            <span class="slider"></span>
+          </label>
+        </label>
+        <p id="exportStatus">Status: Disabled</p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Wait for the page to fully load before attaching events
+    window.onload = function () {
+      const reportToggle = document.getElementById("reportToggle");
+      const chartToggle = document.getElementById("chartToggle");
+      const exportToggle = document.getElementById("exportToggle");
+
+      const reportStatus = document.getElementById("reportStatus");
+      const chartStatus = document.getElementById("chartStatus");
+      const exportStatus = document.getElementById("exportStatus");
+
+      reportToggle.addEventListener("change", () => {
+        reportStatus.textContent = reportToggle.checked ? "Status: Enabled" : "Status: Disabled";
+      });
+
+      chartToggle.addEventListener("change", () => {
+        chartStatus.textContent = chartToggle.checked ? "Status: Enabled" : "Status: Disabled";
+      });
+
+      exportToggle.addEventListener("change", () => {
+        exportStatus.textContent = exportToggle.checked ? "Status: Enabled" : "Status: Disabled";
+      });
+    };
+  </script>
+</body>
+</html>

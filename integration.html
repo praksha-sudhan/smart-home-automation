@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Third-Party Integration</title>
+  <link rel="stylesheet" href="integration.css" />
+</head>
+<body>
+  <header>
+    <h1>Third-Party Service Integration</h1>
+    <a class="back-link" href="home.html">← Back to Dashboard</a>
+  </header>
+
+  <main class="container">
+    <section class="feature-card">
+      <h2>🏠 IoT & Smart Home Platforms</h2>
+      <p>Integrate with platforms like Google Home and Apple HomeKit for seamless control.</p>
+      <div class="subcard">
+        <label class="toggle-label">
+          <span>Enable Google Home / HomeKit</span>
+          <label class="switch">
+            <input type="checkbox" id="iotToggle">
+            <span class="slider"></span>
+          </label>
+        </label>
+        <p id="iotStatus">Status: Disabled</p>
+      </div>
+    </section>
+
+    <section class="feature-card">
+      <h2>🔗 External API Integration</h2>
+      <p>Connect with energy providers and third-party security systems via API.</p>
+      <div class="subcard">
+        <label class="toggle-label">
+          <span>Enable API Integration</span>
+          <label class="switch">
+            <input type="checkbox" id="apiToggle">
+            <span class="slider"></span>
+          </label>
+        </label>
+        <p id="apiStatus">Status: Disabled</p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    window.onload = function () {
+      const iotToggle = document.getElementById("iotToggle");
+      const apiToggle = document.getElementById("apiToggle");
+
+      const iotStatus = document.getElementById("iotStatus");
+      const apiStatus = document.getElementById("apiStatus");
+
+      iotToggle.addEventListener("change", () => {
+        iotStatus.textContent = iotToggle.checked ? "Status: Enabled" : "Status: Disabled";
+      });
+
+      apiToggle.addEventListener("change", () => {
+        apiStatus.textContent = apiToggle.checked ? "Status: Enabled" : "Status: Disabled";
+      });
+    };
+  </script>
+</body>
+</html>

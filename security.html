@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Security & Surveillance</title>
+  <link rel="stylesheet" href="security.css" />
+</head>
+<body>
+  <header>
+    <h1>Security & Surveillance</h1>
+    <a class="back-link" href="home.html">← Back to Dashboard</a>
+  </header>
+
+  <main class="container">
+    <section class="feature-card">
+      <h2>🔐 Door Lock Control</h2>
+      <div class="subcard">
+        <label class="toggle-label">
+          <span>Front Door</span>
+          <label class="switch">
+            <input type="checkbox" id="doorToggle" />
+            <span class="slider"></span>
+          </label>
+        </label>
+        <p id="doorStatus">Status: Locked</p>
+      </div>
+    </section>
+
+    <section class="feature-card">
+      <h2>📹 Camera Monitoring</h2>
+      <div class="subcard">
+        <label class="toggle-label">
+          <span>Outdoor Camera</span>
+          <label class="switch">
+            <input type="checkbox" id="cameraToggle" checked />
+            <span class="slider"></span>
+          </label>
+        </label>
+        <p id="cameraStatus">Status: Active</p>
+      </div>
+    </section>
+
+    <section class="feature-card">
+      <h2>🚨 Motion Detection Alerts</h2>
+      <div class="subcard">
+        <label class="toggle-label">
+          <span>Enable Alerts</span>
+          <label class="switch">
+            <input type="checkbox" id="motionToggle" />
+            <span class="slider"></span>
+          </label>
+        </label>
+        <p id="motionStatus">Status: Disabled</p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const doorToggle = document.getElementById("doorToggle");
+    const doorStatus = document.getElementById("doorStatus");
+    doorToggle.addEventListener("change", () => {
+      doorStatus.textContent = doorToggle.checked ? "Status: Unlocked" : "Status: Locked";
+    });
+
+    const cameraToggle = document.getElementById("cameraToggle");
+    const cameraStatus = document.getElementById("cameraStatus");
+    cameraToggle.addEventListener("change", () => {
+      cameraStatus.textContent = cameraToggle.checked ? "Status: Active" : "Status: Inactive";
+    });
+
+    const motionToggle = document.getElementById("motionToggle");
+    const motionStatus = document.getElementById("motionStatus");
+    motionToggle.addEventListener("change", () => {
+      motionStatus.textContent = motionToggle.checked ? "Status: Enabled" : "Status: Disabled";
+    });
+  </script>
+</body>
+</html>
