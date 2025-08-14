@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Real-Time Alerts & Notifications</title>
+  <link rel="stylesheet" href="alerts.css" />
+</head>
+<body>
+  <header>
+    <h1>Real-Time Alerts & Notifications</h1>
+    <a class="back-link" href="home.html">← Back to Dashboard</a>
+  </header>
+
+  <main class="container">
+    <section class="feature-card">
+      <h2>📢 Instant Device Alerts</h2>
+      <p>Stay updated with device failures, disconnections, or unusual activities.</p>
+    </section>
+
+    <section class="feature-card">
+      <h2>🔔 Choose Your Alert Preferences</h2>
+      <div class="subcard">
+        <label class="toggle-label">
+          <span>Email Notifications</span>
+          <label class="switch">
+            <input type="checkbox" id="emailToggle" checked />
+            <span class="slider"></span>
+          </label>
+        </label>
+        <p id="emailStatus">Status: Enabled</p>
+
+        <label class="toggle-label">
+          <span>SMS Alerts</span>
+          <label class="switch">
+            <input type="checkbox" id="smsToggle" />
+            <span class="slider"></span>
+          </label>
+        </label>
+        <p id="smsStatus">Status: Disabled</p>
+
+        <label class="toggle-label">
+          <span>Push Notifications</span>
+          <label class="switch">
+            <input type="checkbox" id="pushToggle" checked />
+            <span class="slider"></span>
+          </label>
+        </label>
+        <p id="pushStatus">Status: Enabled</p>
+      </div>
+    </section>
+  </main>
+
+  
+  <style>
+  .toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+  }
+
+ 
+  .toast {
+    background-color: #333;
+    color: #fff;
+    padding: 12px 18px;
+    margin-top: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+
+  .toast.show {
+    opacity: 1;
+    transform: translateX(0);
+  }
+</style>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<script>
+  function showToast(message) {
+    const container = document.getElementById("toastContainer");
+    const toast = document.createElement("div");
+    toast.className = "toast";
+    toast.textContent = message;
+
+    container.appendChild(toast);
+
+   
+    setTimeout(() => toast.classList.add("show"), 100);
+
+    setTimeout(() => {
+      toast.classList.remove("show");
+      setTimeout(() => container.removeChild(toast), 400);
+    }, 3000);
+  }
+
+  const emailToggle = document.getElementById("emailToggle");
+  const smsToggle = document.getElementById("smsToggle");
+  const pushToggle = document.getElementById("pushToggle");
+
+  const emailStatus = document.getElementById("emailStatus");
+  const smsStatus = document.getElementById("smsStatus");
+  const pushStatus = document.getElementById("pushStatus");
+
+  emailToggle.addEventListener("change", () => {
+    const status = emailToggle.checked ? "Enabled" : "Disabled";
+    emailStatus.textContent = "Status: " + status;
+    showToast(`📧 Email Notifications ${status}`);
+  });
+
+  smsToggle.addEventListener("change", () => {
+    const status = smsToggle.checked ? "Enabled" : "Disabled";
+    smsStatus.textContent = "Status: " + status;
+    showToast(`📱 SMS Alerts ${status}`);
+  });
+
+  pushToggle.addEventListener("change", () => {
+    const status = pushToggle.checked ? "Enabled" : "Disabled";
+    pushStatus.textContent = "Status: " + status;
+    showToast(`🔔 Push Notifications ${status}`);
+  });
+</script>
+
+
+</body>
+</html>

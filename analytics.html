@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Analytics & Reporting</title>
+  <link rel="stylesheet" href="analytics.css" />
+</head>
+<body>
+  <header>
+    <h1>Analytics & Reporting</h1>
+    <a class="back-link" href="home.html">← Back to Dashboard</a>
+  </header>
+
+  <main class="container">
+    <section class="feature-card">
+      <h2>📑 Generate Reports</h2>
+      <p>View summaries of device usage, automation, and incidents.</p>
+      <div class="subcard">
+        <label class="toggle-label">
+          <span>Enable Report Generation</span>
+          <label class="switch">
+            <input type="checkbox" id="reportToggle">
+            <span class="slider"></span>
+          </label>
+        </label>
+        <p id="reportStatus">Status: Disabled</p>
+      </div>
+    </section>
+
+    <section class="feature-card">
+      <h2>📊 Data Visualization</h2>
+      <p>Visualize trends and patterns using charts and graphs.</p>
+      <div class="subcard">
+        <label class="toggle-label">
+          <span>Enable Charts</span>
+          <label class="switch">
+            <input type="checkbox" id="chartToggle">
+            <span class="slider"></span>
+          </label>
+        </label>
+        <p id="chartStatus">Status: Disabled</p>
+      </div>
+    </section>
+
+    <section class="feature-card">
+      <h2>📂 Export Options</h2>
+      <p>Export reports in PDF or CSV format for future use.</p>
+      <div class="subcard">
+        <label class="toggle-label">
+          <span>Enable Export</span>
+          <label class="switch">
+            <input type="checkbox" id="exportToggle">
+            <span class="slider"></span>
+          </label>
+        </label>
+        <p id="exportStatus">Status: Disabled</p>
+      </div>
+    </section>
+  </main>
+
+<style>
+  .toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+  }
+
+  .toast {
+    background-color: #333;
+    color: #fff;
+    padding: 12px 18px;
+    margin-top: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+
+  .toast.show {
+    opacity: 1;
+    transform: translateX(0);
+  }
+</style>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<script>
+  function showToast(message) {
+    const container = document.getElementById("toastContainer");
+    const toast = document.createElement("div");
+    toast.className = "toast";
+    toast.textContent = message;
+
+    container.appendChild(toast);
+
+    setTimeout(() => toast.classList.add("show"), 100);
+
+    setTimeout(() => {
+      toast.classList.remove("show");
+      setTimeout(() => container.removeChild(toast), 400);
+    }, 3000);
+  }
+  window.onload = function () {
+    const reportToggle = document.getElementById("reportToggle");
+    const chartToggle = document.getElementById("chartToggle");
+    const exportToggle = document.getElementById("exportToggle");
+
+    const reportStatus = document.getElementById("reportStatus");
+    const chartStatus = document.getElementById("chartStatus");
+    const exportStatus = document.getElementById("exportStatus");
+
+    reportToggle.addEventListener("change", () => {
+      const status = reportToggle.checked ? "Enabled" : "Disabled";
+      reportStatus.textContent = "Status: " + status;
+      showToast(`📑 Report Generation ${status}`);
+    });
+
+    chartToggle.addEventListener("change", () => {
+      const status = chartToggle.checked ? "Enabled" : "Disabled";
+      chartStatus.textContent = "Status: " + status;
+      showToast(`📊 Charts ${status}`);
+    });
+
+    exportToggle.addEventListener("change", () => {
+      const status = exportToggle.checked ? "Enabled" : "Disabled";
+      exportStatus.textContent = "Status: " + status;
+      showToast(`📂 Export ${status}`);
+    });
+  };
+</script>
+
+</body>
+</html>

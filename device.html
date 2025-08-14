@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Device Management</title>
+  <link rel="stylesheet" href="device.css" />
+</head>
+<body>
+  <header>
+    <h1>Device Management</h1>
+    <a href="home.html" class="back-link">← Back to Dashboard</a>
+  </header>
+
+  <main class="container">
+    <section class="form-section">
+      <h2>Register New Device</h2>
+      <form id="deviceForm">
+        <label>Device Name: <input type="text" id="deviceName" required></label>
+        <label>Type:
+          <select id="deviceType">
+            <option>Light</option>
+            <option>Thermostat</option>
+            <option>Security Camera</option>
+            <option>Door Lock</option>
+          </select>
+        </label>
+        <label>Room/Zone: <input type="text" id="deviceRoom" required></label>
+        <button type="submit">Add Device</button>
+      </form>
+    </section>
+
+    <section class="device-list-section">
+      <h2>Registered Devices</h2>
+      <ul id="deviceList"></ul>
+    </section>
+  </main>
+
+  <div id="popup" style="display:none;" class="popup-box">
+    <h3 id="popupDeviceName">Device</h3>
+    <p>Type: <span id="popupDeviceType"></span></p>
+    <p>Room: <span id="popupDeviceRoom"></span></p>
+    <p>Status: <span id="deviceStatus">OFF</span></p>
+    <button onclick="toggleDeviceStatus()">Toggle ON/OFF</button>
+    <button onclick="closePopup()">Close</button>
+  </div>
+
+  <script src="device.js"></script>
+</body>
+</html>

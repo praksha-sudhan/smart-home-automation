@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>User Profile</title>
+  <link rel="stylesheet" href="home.css" />
+</head>
+<body>
+  <div class="profile-page">
+    <h2>User Profile</h2>
+    
+    <div class="profile-picture">
+      <img src="profile .jpg" alt="Profile Picture" />
+      <button class="btn-edit">Change Photo</button>
+    </div>
+
+    <div class="profile-info">
+      <div class="profile-box">
+        <label>Full Name</label>
+        <p>Praksha Sudhan</p>
+      </div>
+      <div class="profile-box">
+        <label>Email</label>
+        <p>praksha@email.com</p>
+      </div>
+      <div class="profile-box">
+        <label>Phone Number</label>
+        <p>+91 98765 43210</p>
+      </div>
+      <div class="profile-box">
+        <label>Address</label>
+        <p>Coimbatore, Tamil Nadu, India</p>
+      </div>
+      <div class="profile-box">
+        <label>User Role</label>
+        <p>Admin</p>
+      </div>
+      <div class="profile-box">
+        <label>Theme Preference</label>
+        <select>
+          <option selected>Pastel</option>
+          <option>Light</option>
+          <option>Dark</option>
+        </select>
+      </div>
+      <div class="profile-box">
+        <label>Security Settings</label>
+        <p>Password: ******** <button class="btn-edit">Change</button></p>
+        <p>Two-Factor Auth: <button class="btn-toggle">Enable</button></p>
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top:2rem;">
+      <button class="btn-logout">Logout</button>
+    </div>
+  </div>
+</body>
+</html>

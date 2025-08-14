@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Energy Monitoring</title>
+  <link rel="stylesheet" href="energy.css" />
+</head>
+<body>
+  <header>
+    <h1>Energy Consumption Monitoring</h1>
+    <a class="back-link" href="home.html">← Back to Dashboard</a>
+  </header>
+
+  <main class="container">
+    <section class="feature-card">
+      <h2>📊 Track Energy Usage</h2>
+      <p>Monitor real-time power consumption of your smart devices.</p>
+      <div class="subcard">
+        <label class="toggle-label">
+          <span>Track Light Usage</span>
+          <label class="switch">
+            <input type="checkbox" id="lightUsageToggle" />
+            <span class="slider"></span>
+          </label>
+        </label>
+        <p id="lightUsageStatus">Status: Off</p>
+      </div>
+    </section>
+
+    <section class="feature-card">
+      <h2>📈 Energy Reports</h2>
+      <p>Generate weekly/monthly reports of device energy usage trends.</p>
+      <div class="subcard">
+        <label class="toggle-label">
+          <span>Enable Auto Report</span>
+          <label class="switch">
+            <input type="checkbox" id="reportToggle" />
+            <span class="slider"></span>
+          </label>
+        </label>
+        <p id="reportStatus">Status: Off</p>
+      </div>
+    </section>
+
+    <section class="feature-card">
+      <h2>💡 Efficiency Suggestions</h2>
+      <p>Get smart recommendations to reduce energy waste and save costs.</p>
+      <div class="subcard">
+        <label class="toggle-label">
+          <span>Enable Suggestions</span>
+          <label class="switch">
+            <input type="checkbox" id="suggestionToggle" />
+            <span class="slider"></span>
+          </label>
+        </label>
+        <p id="suggestionStatus">Status: Off</p>
+      </div>
+    </section>
+  </main>
+
+<style>
+ 
+  .toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+  }
+
+
+  .toast {
+    background-color: #333;
+    color: #fff;
+    padding: 12px 18px;
+    margin-top: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+
+
+  .toast.show {
+    opacity: 1;
+    transform: translateX(0);
+  }
+</style>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<script>
+  function showToast(message) {
+    const container = document.getElementById("toastContainer");
+    const toast = document.createElement("div");
+    toast.className = "toast";
+    toast.textContent = message;
+
+    container.appendChild(toast);
+
+    setTimeout(() => toast.classList.add("show"), 100);
+
+    setTimeout(() => {
+      toast.classList.remove("show");
+      setTimeout(() => container.removeChild(toast), 400);
+    }, 3000);
+  }
+
+  const lightToggle = document.getElementById("lightUsageToggle");
+  const reportToggle = document.getElementById("reportToggle");
+  const suggestionToggle = document.getElementById("suggestionToggle");
+
+  const lightStatus = document.getElementById("lightUsageStatus");
+  const reportStatus = document.getElementById("reportStatus");
+  const suggestionStatus = document.getElementById("suggestionStatus");
+
+  lightToggle.addEventListener("change", () => {
+    const status = lightToggle.checked ? "On" : "Off";
+    lightStatus.textContent = "Status: " + status;
+    showToast(`💡 Light Usage Tracking ${status}`);
+  });
+
+  reportToggle.addEventListener("change", () => {
+    const status = reportToggle.checked ? "On" : "Off";
+    reportStatus.textContent = "Status: " + status;
+    showToast(`📈 Auto Energy Report ${status}`);
+  });
+
+  suggestionToggle.addEventListener("change", () => {
+    const status = suggestionToggle.checked ? "On" : "Off";
+    suggestionStatus.textContent = "Status: " + status;
+    showToast(`💡 Efficiency Suggestions ${status}`);
+  });
+</script>
+
+
+</body>
+</html>

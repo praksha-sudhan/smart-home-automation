@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Voice Assistant Integration</title>
+  <link rel="stylesheet" href="voice.css" />
+  <style>
+    .toast {
+      visibility: hidden;
+      min-width: 250px;
+      background-color: #333;
+      color: #fff;
+      text-align: center;
+      border-radius: 8px;
+      padding: 14px;
+      position: fixed;
+      z-index: 1000;
+      right: 20px;
+      bottom: 30px;
+      font-size: 16px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.4s, transform 0.4s;
+    }
+    .toast.show {
+      visibility: visible;
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Voice Assistant Integration</h1>
+    <a class="back-link" href="home.html">← Back to Dashboard</a>
+  </header>
+
+  <main class="container">
+    <section class="feature-card">
+      <h2>🎙️ Connect with Alexa</h2>
+      <p>Control your smart devices using Amazon Alexa voice commands.</p>
+      <div class="subcard">
+        <label class="toggle-label">
+          <span>Enable Alexa</span>
+          <label class="switch">
+            <input type="checkbox" id="alexaToggle" />
+            <span class="slider"></span>
+          </label>
+        </label>
+        <p id="alexaStatus">Status: Disabled</p>
+      </div>
+    </section>
+
+    <section class="feature-card">
+      <h2>🗣️ Connect with Google Assistant</h2>
+      <p>Execute automation and get updates using Google Assistant.</p>
+      <div class="subcard">
+        <label class="toggle-label">
+          <span>Enable Google Assistant</span>
+          <label class="switch">
+            <input type="checkbox" id="googleToggle" />
+            <span class="slider"></span>
+          </label>
+        </label>
+        <p id="googleStatus">Status: Disabled</p>
+      </div>
+    </section>
+
+    <section class="feature-card">
+      <h2>💬 Connect with Siri</h2>
+      <p>Use Apple Siri to control smart home features hands-free.</p>
+      <div class="subcard">
+        <label class="toggle-label">
+          <span>Enable Siri</span>
+          <label class="switch">
+            <input type="checkbox" id="siriToggle" />
+            <span class="slider"></span>
+          </label>
+        </label>
+        <p id="siriStatus">Status: Disabled</p>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast"></div>
+
+  <script>
+    function showToast(message) {
+      const toast = document.getElementById("toast");
+      toast.textContent = message;
+      toast.className = "toast show";
+      setTimeout(() => {
+        toast.className = toast.className.replace("show", "");
+      }, 3000);
+    }
+
+    const alexaToggle = document.getElementById("alexaToggle");
+    const alexaStatus = document.getElementById("alexaStatus");
+    alexaToggle.addEventListener("change", () => {
+      const status = alexaToggle.checked ? "Enabled" : "Disabled";
+      alexaStatus.textContent = `Status: ${status}`;
+      showToast(`Alexa ${status}`);
+    });
+
+    const googleToggle = document.getElementById("googleToggle");
+    const googleStatus = document.getElementById("googleStatus");
+    googleToggle.addEventListener("change", () => {
+      const status = googleToggle.checked ? "Enabled" : "Disabled";
+      googleStatus.textContent = `Status: ${status}`;
+      showToast(`Google Assistant ${status}`);
+    });
+
+    const siriToggle = document.getElementById("siriToggle");
+    const siriStatus = document.getElementById("siriStatus");
+    siriToggle.addEventListener("change", () => {
+      const status = siriToggle.checked ? "Enabled" : "Disabled";
+      siriStatus.textContent = `Status: ${status}`;
+      showToast(`Siri ${status}`);
+    });
+  </script>
+</body>
+</html>

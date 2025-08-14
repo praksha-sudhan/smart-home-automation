@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Security & Surveillance</title>
+  <link rel="stylesheet" href="security.css" />
+</head>
+<body>
+  <header>
+    <h1>Security & Surveillance</h1>
+    <a class="back-link" href="home.html">← Back to Dashboard</a>
+  </header>
+
+  <main class="container">
+    <section class="feature-card">
+      <h2>🔐 Door Lock Control</h2>
+      <div class="subcard">
+        <label class="toggle-label">
+          <span>Front Door</span>
+          <label class="switch">
+            <input type="checkbox" id="doorToggle" />
+            <span class="slider"></span>
+          </label>
+        </label>
+        <p id="doorStatus">Status: Locked</p>
+      </div>
+    </section>
+
+    <section class="feature-card">
+      <h2>📹 Camera Monitoring</h2>
+      <div class="subcard">
+        <label class="toggle-label">
+          <span>Outdoor Camera</span>
+          <label class="switch">
+            <input type="checkbox" id="cameraToggle" checked />
+            <span class="slider"></span>
+          </label>
+        </label>
+        <p id="cameraStatus">Status: Active</p>
+      </div>
+    </section>
+
+    <section class="feature-card">
+      <h2>🚨 Motion Detection Alerts</h2>
+      <div class="subcard">
+        <label class="toggle-label">
+          <span>Enable Alerts</span>
+          <label class="switch">
+            <input type="checkbox" id="motionToggle" />
+            <span class="slider"></span>
+          </label>
+        </label>
+        <p id="motionStatus">Status: Disabled</p>
+      </div>
+    </section>
+  </main>
+
+<style>
+ 
+  .toast-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+  }
+
+  .toast {
+    background-color: #333;
+    color: #fff;
+    padding: 12px 18px;
+    margin-top: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+
+  .toast.show {
+    opacity: 1;
+    transform: translateX(0);
+  }
+</style>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<script>
+  function showToast(message) {
+    const container = document.getElementById("toastContainer");
+    const toast = document.createElement("div");
+    toast.className = "toast";
+    toast.textContent = message;
+
+    container.appendChild(toast);
+
+    setTimeout(() => toast.classList.add("show"), 100);
+
+    setTimeout(() => {
+      toast.classList.remove("show");
+      setTimeout(() => container.removeChild(toast), 400);
+    }, 3000);
+  }
+
+  window.onload = function () {
+    const doorToggle = document.getElementById("doorToggle");
+    const cameraToggle = document.getElementById("cameraToggle");
+    const motionToggle = document.getElementById("motionToggle");
+
+    const doorStatus = document.getElementById("doorStatus");
+    const cameraStatus = document.getElementById("cameraStatus");
+    const motionStatus = document.getElementById("motionStatus");
+
+    doorToggle.addEventListener("change", () => {
+      const status = doorToggle.checked ? "Unlocked" : "Locked";
+      doorStatus.textContent = "Status: " + status;
+      showToast(`🔐 Front Door ${status}`);
+    });
+
+    cameraToggle.addEventListener("change", () => {
+      const status = cameraToggle.checked ? "Active" : "Inactive";
+      cameraStatus.textContent = "Status: " + status;
+      showToast(`📹 Outdoor Camera ${status}`);
+    });
+
+    motionToggle.addEventListener("change", () => {
+      const status = motionToggle.checked ? "Enabled" : "Disabled";
+      motionStatus.textContent = "Status: " + status;
+      showToast(`🚨 Motion Detection ${status}`);
+    });
+  };
+</script>
+
+</body>
+</html>
